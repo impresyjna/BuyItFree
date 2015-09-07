@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   get 'rules'   => 'static_pages#rules'
   get 'signup'  => 'users#new'
 
+  resources :users
 end
