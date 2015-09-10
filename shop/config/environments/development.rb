@@ -37,7 +37,15 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
   
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.delivery_method = :test
   host = 'buyitforfree-wampir1408.c9.io'
   config.action_mailer.default_url_options = { host: host }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :authentication => :plain,
+    :address => "smtp.mailgun.org",
+    :port => 587,
+    :domain => "buyitforfree.com.mailgun.org",
+    :user_name => "postmaster@buyitforfree.com",
+    :password => "0c5f39159f13f0676fb1d5e9e544f09b"
+  }
 end
