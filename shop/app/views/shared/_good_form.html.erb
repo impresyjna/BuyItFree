@@ -1,0 +1,17 @@
+<%= form_for(@good) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="field">
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.text_field :price %>
+  </div>
+  <div class="field">
+    <%= f.number_field :how_many %>
+  </div>
+  
+  <%= f.submit "Post", class: "btn btn-primary" %>
+<% end %>

@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get 'users'   => 'users#index'
   
   resources :users
+  resources :goods
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
 
