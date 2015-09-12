@@ -3,9 +3,6 @@ class StaticPagesController < ApplicationController
     @good = current_user.goods.build if logged_in?
   end
 
-  def help
-  end
-
   def rules
   end
 
