@@ -12,9 +12,16 @@
     <%= render 'layouts/header' %>
     <div class="container">
       <div class="col-md-3">
-        <strong>Kategorie</strong>
-        
-          <%= render @categories %>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">Kategorie</h3>
+            </div>
+            <div class="panel-body">
+                        <ul class="list-group">
+            <%= render Category.all  %>
+          </ul>
+            </div>
+          </div>
       </div>
       <div class="col-md-9">
         <% flash.each do |message_type, message| %>
