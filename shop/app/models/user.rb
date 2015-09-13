@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
     attr_accessor :remember_token, :activation_token, :reset_token
     before_save   :downcase_email
     before_create :create_activation_digest
+    OPTIONS = [['Sprzedawca', 'seller'], ['Klient', 'client']]
 
     
     validates :name,  presence: true, length: { maximum: 50 }, uniqueness: { case_sensitive: false }
@@ -11,6 +12,7 @@ class User < ActiveRecord::Base
     format: { with: VALID_EMAIL_REGEX },uniqueness: { case_sensitive: false }
     has_secure_password
     validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
+    validates_inclusion_of :account_type, :in => OPTIONS
 
   # Returns the hash digest of the given string.
   def User.digest(string)

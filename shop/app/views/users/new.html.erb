@@ -1,22 +1,25 @@
-<% provide(:title, 'Sign up') %>
-<h1>Sign up</h1>
+<% provide(:title, 'Zarejestruj się') %>
+<h1>Rejestracja</h1>
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_for(@user) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
 
-      <%= f.label :name %>
+      <%= f.label :name, "Nazwa użytkownika" %>
       <%= f.text_field :name, class: 'form-control' %>
 
-      <%= f.label :email %>
+      <%= f.label :email, "Email" %>
       <%= f.email_field :email, class: 'form-control' %>
 
-      <%= f.label :password %>
+      <%= f.label :password, "Hasło" %>
       <%= f.password_field :password, class: 'form-control' %>
 
-      <%= f.label :password_confirmation, "Confirmation" %>
+      <%= f.label :password_confirmation, "Potwierdzenie" %>
       <%= f.password_field :password_confirmation, class: 'form-control' %>
+      
+      <%= f.label :account_type, "Typ konta" %>
+      <%= f.select :account_type, User::OPTIONS %>
 
       <%= f.submit "Create my account", class: "btn btn-primary" %>
     <% end %>
