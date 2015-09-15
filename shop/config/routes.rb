@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'customers/new'
+
+  get 'customers/edit'
+
   resources :goods
   resources :goods
   resources :categories
