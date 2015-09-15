@@ -19,7 +19,7 @@
       <%= f.password_field :password_confirmation, class: 'form-control' %>
       
       <%= f.label :account_type, "Typ konta" %>
-      <%= f.select :account_type, User::OPTIONS %>
+      <%= f.select :account_type, options_for_select([["Sprzedawca", "seller"], ["Klient", "customer"]]) %>
 
       <%= f.submit "Create my account", class: "btn btn-primary" %>
     <% end %>
