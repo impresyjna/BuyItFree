@@ -8,7 +8,11 @@ def create
       if user.activated?
         log_in user
         params[:session][:remember_me] == '1' ? remember(user) : forget(user)
-        redirect_back_or user
+        if user.filled_data?
+          redirect_back_or user
+        else
+          redirect_back_or filldata_url
+        end
       else
         message  = "Konto nieaktywne. "
         message += "Sprawdź swój email czy nie ma maila aktywacyjnego. "
