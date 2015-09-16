@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150916185917) do
+ActiveRecord::Schema.define(version: 20150916214158) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20150916185917) do
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "telephone"
   end
 
   add_index "customers", ["user_id", "created_at"], name: "index_customers_on_user_id_and_created_at"
@@ -50,6 +51,8 @@ ActiveRecord::Schema.define(version: 20150916185917) do
     t.integer  "user_id"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+    t.string   "telephone"
+    t.string   "company_number"
   end
 
   add_index "sellers", ["user_id", "created_at"], name: "index_sellers_on_user_id_and_created_at"
