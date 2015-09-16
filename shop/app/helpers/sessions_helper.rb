@@ -34,6 +34,14 @@ module SessionsHelper
     user == current_user
   end
   
+  def seller?(user)
+    user.account_type.to_s=="seller"
+  end
+  
+  def new_here?(user)
+    user.customer.nil? and user.seller.nil?
+  end
+  
   # Forgets a persistent session.
   def forget(user)
     user.forget

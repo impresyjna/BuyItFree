@@ -10,9 +10,12 @@ Rails.application.routes.draw do
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
   get 'users'   => 'users#index'
-  get 'filldata' => 'customers#new'
-  get 'editdata' => 'customers#edit'
+  get 'customer_create' => 'customers#new'
+  get 'customer_account' => 'customers#edit'
   get 'profile' => 'users#show'
+  get 'seller_create' => 'sellers#new'
+  get 'seller_account' => 'sellers#edit'
+  
   
   resources :users
   resources :account_activations, only: [:edit]

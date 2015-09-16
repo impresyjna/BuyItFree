@@ -8,10 +8,14 @@ def create
       if user.activated?
         log_in user
         params[:session][:remember_me] == '1' ? remember(user) : forget(user)
-        if user.filled_data?
-          redirect_back_or user
+        if new_here?(current_user)
+          if seller?(current_user)
+            redirect_back_or seller_create_url
+          else
+            redirect_back_or customer_create_url
+          end
         else
-          redirect_back_or filldata_url
+          redirect_back_or current_user
         end
       else 
         message  = "Konto nieaktywne. "
