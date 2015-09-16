@@ -19,6 +19,16 @@ class SellersController < ApplicationController
     end
   end
   
+  def update
+    @seller = current_user.seller
+    if @seller.update_attributes(seller_params)
+      flash[:success] = "Dane zaktualizowane"
+      redirect_to current_user
+    else
+      render 'edit'
+    end
+  end
+  
   private
 
     def seller_params
