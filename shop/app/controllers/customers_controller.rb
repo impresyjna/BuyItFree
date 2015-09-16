@@ -4,6 +4,7 @@ class CustomersController < ApplicationController
   end
 
   def edit
+    @customer = current_user.customer
   end
   
   def create
@@ -15,6 +16,16 @@ class CustomersController < ApplicationController
     else
       flash[:warning] = "Nie udało się zapisać danych" 
       render 'new'
+    end
+  end
+  
+  def update
+    @customer = current_user.customer
+    if @customer.update_attributes(customer_params)
+      flash[:success] = "Dane zaktualizowane"
+      redirect_to current_user
+    else
+      render 'edit'
     end
   end
   
