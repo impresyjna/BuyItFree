@@ -4,6 +4,7 @@ class SellersController < ApplicationController
   end
 
   def edit
+    @seller = current_user.seller
   end
   
   def create
@@ -22,9 +23,9 @@ class SellersController < ApplicationController
 
     def seller_params
       params.require(:seller).permit(:name, :surname, :address,
-                                   :post_code, :city, :account_number, 
+                                   :post_code, :city, :telephone,  :account_number, 
                                    :company_name, :company_address, 
-                                   :company_post_code, :company_city, :regon, 
+                                   :company_post_code, :company_city, :company_number, :regon, 
                                    :nip, :krs)
     end
   

@@ -1,2 +1,57 @@
-<h1>Sellers#edit</h1>
-<p>Find me in app/views/sellers/edit.html.erb</p>
+<% provide(:title, 'Dane użytkownika') %>
+<h1>Edytuj dane</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@seller) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+
+      <%= f.label :name, "Imię" %>
+      <%= f.text_field :name, class: 'form-control' %>
+
+      <%= f.label :surname, "Nazwisko" %>
+      <%= f.text_field :surname, class: 'form-control' %>
+
+      <%= f.label :address, "Adres" %>
+      <%= f.text_field :address, class: 'form-control' %>
+
+      <%= f.label :post_code, "Kod pocztowy" %>
+      <%= f.text_field :post_code, class: 'form-control' %>
+      
+      <%= f.label :city, "Miejscowość" %>
+      <%= f.text_field :city, class: 'form-control'  %>
+      
+      <%= f.label :telephone, "Telefon" %>
+      <%= f.text_field :telephone, class: 'form-control'  %>
+      
+      <%= f.label :account_number, "Numer konta" %>
+      <%= f.text_field :account_number, class: 'form-control'  %>
+      
+      <%= f.label :company_name, "Nazwa firmy" %>
+      <%= f.text_field :company_name, class: 'form-control'  %>
+      
+      <%= f.label :company_address, "Adres firmy" %>
+      <%= f.text_field :company_address, class: 'form-control'  %>
+      
+      <%= f.label :company_post_code, "Kod pocztowy firmy" %>
+      <%= f.text_field :company_post_code, class: 'form-control'  %>
+      
+      <%= f.label :company_city, "Miejscowość firmy" %>
+      <%= f.text_field :company_city, class: 'form-control'  %>
+      
+      <%= f.label :company_number, "Telefon do firmy" %>
+      <%= f.text_field :company_number, class: 'form-control'  %>
+      
+      <%= f.label :regon, "Regon" %>
+      <%= f.text_field :regon, class: 'form-control'  %>
+      
+      <%= f.label :nip, "NIP" %>
+      <%= f.text_field :nip, class: 'form-control'  %>
+      
+      <%= f.label :krs, "KRS" %>
+      <%= f.text_field :krs, class: 'form-control'  %>
+ 
+      <%= f.submit "Zapisz", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
