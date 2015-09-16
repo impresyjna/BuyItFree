@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'sellers/new'
+
+  get 'sellers/edit'
+
   get 'customers/new'
 
   get 'customers/edit'
