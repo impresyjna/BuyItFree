@@ -13,7 +13,7 @@ def create
         else
           redirect_back_or filldata_url
         end
-      else
+      else 
         message  = "Konto nieaktywne. "
         message += "Sprawdź swój email czy nie ma maila aktywacyjnego. "
         flash[:warning] = message
@@ -23,7 +23,7 @@ def create
       flash.now[:danger] = 'Niepoprawna kombinacja email/hasło. '
       render 'new'
     end
-  end
+end
 
   def destroy
     log_out if logged_in?

@@ -1,6 +1,5 @@
 class StaticPagesController < ApplicationController
   def home
-    @good = current_user.goods.build if logged_in?
   end
 
   def rules

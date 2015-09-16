@@ -6,6 +6,7 @@ one:
   address: MyString
   post_code: MyString
   city: MyString
+  user_id: 
 
 two:
   name: MyString
@@ -13,3 +14,4 @@ two:
   address: MyString
   post_code: MyString
   city: MyString
+  user_id: 

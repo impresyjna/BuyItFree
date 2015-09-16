@@ -3,7 +3,10 @@ Rails.application.routes.draw do
 
   get 'customers/edit'
 
-  resources :goods
+  get 'customers/new'
+
+  get 'customers/edit'
+
   resources :goods
   resources :categories
   get 'sessions/new'
@@ -21,9 +24,11 @@ Rails.application.routes.draw do
   get 'users'   => 'users#index'
   get 'filldata' => 'customers#new'
   get 'editdata' => 'customers#edit'
+  get 'profile' => 'users#show'
   
   resources :users
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
+  resources :customers, only: [:new, :create, :edit, :update]
 
 end
