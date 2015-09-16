@@ -1,21 +1,5 @@
 Rails.application.routes.draw do
-  get 'sellers/new'
-
-  get 'sellers/edit'
-
-  get 'customers/new'
-
-  get 'customers/edit'
-
-  get 'customers/new'
-
-  get 'customers/edit'
-
-  resources :goods
-  resources :categories
   get 'sessions/new'
-
-  get 'users/new'
 
   root             'static_pages#home'
   get 'about'   => 'static_pages#about'
@@ -34,5 +18,7 @@ Rails.application.routes.draw do
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :customers, only: [:new, :create, :edit, :update]
+  resources :categories
+  resources :sellers, only:[:new, :create, :edit, :update]
 
 end

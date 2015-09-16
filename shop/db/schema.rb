@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150916183326) do
+ActiveRecord::Schema.define(version: 20150916185917) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -69,7 +69,6 @@ ActiveRecord::Schema.define(version: 20150916183326) do
     t.string   "reset_digest"
     t.datetime "reset_sent_at"
     t.string   "account_type"
-    t.boolean  "filled_data",       default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
