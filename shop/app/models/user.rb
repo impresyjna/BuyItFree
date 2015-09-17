@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
     before_create :create_activation_digest 
     has_one :customer, dependent: :destroy
     has_one :seller, dependent: :destroy
+    has_many :goods, dependent: :destroy
     
     
     validates :name,  presence: true, length: { maximum: 50 }, uniqueness: { case_sensitive: false }

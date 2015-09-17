@@ -1,0 +1,27 @@
+<% provide(:title, 'Dodaj produkt') %>
+<h1>Nowy produkt</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@good, :html => { :multipart => true }) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+
+      <%= f.label :title, "Tytuł" %>
+      <%= f.text_field :title, class: 'form-control' %>
+      
+      <%= f.label :description, "Opis" %>
+      <%= f.text_area :description, class: 'form-control' %>
+      
+      <%= f.label :price, "Cena" %>
+      <%= f.text_field :price, class: 'form-control' %>
+      
+      <%= f.label :how_many, "Ilosć" %>
+      <%= f.number_field :how_many, class: 'form-control' %>
+      
+      <%= f.label :photo, "Zdjęcie" %>
+      <%= f.file_field :photo %>
+ 
+      <%= f.submit "Zapisz", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
