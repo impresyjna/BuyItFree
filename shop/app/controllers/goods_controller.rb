@@ -10,6 +10,7 @@ class GoodsController < ApplicationController
   end
 
   def index
+    @goods = Good.paginate(page: params[:page])
   end
   
   def create

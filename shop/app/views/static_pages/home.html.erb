@@ -3,13 +3,9 @@
 <div class="container">
    <%= render 'carousel/carousel_holder' %>
    <div class="col-md-9">
+    <% @products = Good.last(6)%>
       <div class="row">
-          <%= render 'product/one_product' %>
-          <%= render 'product/one_product' %>
-          <%= render 'product/one_product' %>
-          <%= render 'product/one_product' %>
-          <%= render 'product/one_product' %>
-          <%= render 'product/one_product' %>
+          <%= render @products %>
       </div>
   </div>
 </div>

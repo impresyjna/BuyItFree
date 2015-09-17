@@ -1,4 +1,11 @@
-<li>
-  <%= good.title %>
-  <%= good.description %>
-</li>
+<div class="col-sm-4 col-lg-4 col-md-4">
+   <div class="thumbnail">
+      <%= link_to image_tag(good.photo.url(:large)), good.photo.url %>
+      <div class="caption">
+         <h4 class="pull-right"><%= good.price %> zł</h4>
+         <h4><%= link_to good.title, good %>
+         </h4>
+      </div>
+   </div>
+</div>
+

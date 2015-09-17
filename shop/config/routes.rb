@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   get 'seller_account' => 'sellers#edit'
   get 'add_product' => 'goods#new'
   get 'my_products' => 'goods#mine'
+  get 'all_products' => 'goods#index'
   
   resources :users
   resources :account_activations, only: [:edit]
