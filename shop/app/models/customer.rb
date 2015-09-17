@@ -10,7 +10,6 @@ class Customer < ActiveRecord::Base
     validates :surname, presence: true, format: {with: VALID_WORD_REGEX }, length: { maximum: 50 }
     validates :address, presence: true, length: { maximum: 100 }
     validates :telephone, numericality: true, length: { :minimum => 7, :maximum => 15 }
-    validates :company_city, format: {with: VALID_WORD_REGEX, message: "Tylko litery dozwolone" }, length: { maximum: 50 }
 
   
 end
