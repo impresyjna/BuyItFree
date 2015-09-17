@@ -4,6 +4,7 @@ class Seller < ActiveRecord::Base
     VALID_POST_CODE_REGEX = /\d{2}-\d{3}\z/
     VALID_WORD_REGEX = /\A\D+\z/
     VALID_ACCOUNT_REGEX = /\A[0-9]{26}\z/
+    VALID_TELEPHONE_REGEX = /\A[0-9]{7,15}\z/
     validates :post_code, presence: true, format: { with: VALID_POST_CODE_REGEX }
     validates :city, presence: true, format: {with: VALID_WORD_REGEX }, length: { maximum: 50 }
     validates :name, presence: true, format: {with: VALID_WORD_REGEX }, length: { maximum: 50 }
@@ -11,4 +12,5 @@ class Seller < ActiveRecord::Base
     validates :address, presence: true, length: { maximum: 100 }
     validates :telephone, numericality: true, length: { :minimum => 7, :maximum => 15 }
     validates :account_number, presence: true, format: {with: VALID_ACCOUNT_REGEX, message: "Niepoprawny numer konta" }
+    validates_format_of :company_number, :with => VALID_TELEPHONE_REGEX, :allow_blank => true
 end
