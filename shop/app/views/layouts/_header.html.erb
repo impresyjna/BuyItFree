@@ -13,6 +13,8 @@
               <li><%= link_to "Ustawienia", edit_user_path(current_user) %></li>
               <% if seller?(current_user) %>
                 <li><%= link_to "Edytuj dane", seller_account_path %></li>
+                <li><%= link_to "Dodaj produkt", add_product_path %></li>
+                <li><%= link_to "Moje produkty", my_products_path %></li>
               <% else %>
                 <li><%= link_to "Edytuj dane", customer_account_path %></li>
               <% end %> 

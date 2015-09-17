@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'goods/mine'
+
   get 'sessions/new'
 
   root             'static_pages#home'
@@ -15,7 +17,8 @@ Rails.application.routes.draw do
   get 'profile' => 'users#show'
   get 'seller_create' => 'sellers#new'
   get 'seller_account' => 'sellers#edit'
-  
+  get 'add_product' => 'goods#new'
+  get 'my_products' => 'goods#mine'
   
   resources :users
   resources :account_activations, only: [:edit]

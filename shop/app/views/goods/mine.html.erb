@@ -1,0 +1,10 @@
+<% provide(:title, 'Wszystkie produkty') %>
+<h1>Produkty</h1>
+
+<%= will_paginate %>
+
+<ul class="goods">
+    <%= render @goods %>
+</ul>
+
+<%= will_paginate %>

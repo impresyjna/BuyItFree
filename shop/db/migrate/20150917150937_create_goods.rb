@@ -5,7 +5,6 @@ class CreateGoods < ActiveRecord::Migration
       t.float :price
       t.string :description
       t.integer :how_many
-      t.attachment :photo
 
       t.timestamps null: false
     end

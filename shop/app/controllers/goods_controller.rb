@@ -13,7 +13,7 @@ class GoodsController < ApplicationController
   end
   
   def create
-    @good = Good.new(good_params)
+    @good = current_user.goods.build(good_params)
     if @good.save
       flash[:success] = "Dodano produkt"
       redirect_to current_user
@@ -21,6 +21,10 @@ class GoodsController < ApplicationController
       flash[:warning] = "Nie udało się dodać produktu" 
       render 'new'
     end
+  end
+  
+  def mine
+    @goods = current_user.goods.paginate(page: params[:page])
   end
   
   private
