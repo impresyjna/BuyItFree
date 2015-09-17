@@ -35,8 +35,7 @@ class SellersController < ApplicationController
       params.require(:seller).permit(:name, :surname, :address,
                                    :post_code, :city, :telephone,  :account_number, 
                                    :company_name, :company_address, 
-                                   :company_post_code, :company_city, :company_number, :regon, 
-                                   :nip, :krs)
+                                   :company_post_code, :company_city, :company_number)
     end
   
 end
