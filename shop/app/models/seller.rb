@@ -13,4 +13,5 @@ class Seller < ActiveRecord::Base
     validates :telephone, numericality: true, length: { :minimum => 7, :maximum => 15 }
     validates :account_number, presence: true, format: {with: VALID_ACCOUNT_REGEX, message: "Niepoprawny numer konta" }
     validates_format_of :company_number, :with => VALID_TELEPHONE_REGEX, :allow_blank => true
+    validates_format_of :company_post_code, :with =>VALID_POST_CODE_REGEX, :allow_blank => true
 end
