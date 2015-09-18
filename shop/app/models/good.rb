@@ -6,4 +6,5 @@ class Good < ActiveRecord::Base
     validates_attachment_content_type :photo, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
     
     validates :title, presence: true, length: { maximum: 150 }
+    validates :description, presence: true
 end
