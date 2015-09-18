@@ -11,4 +11,5 @@ class Good < ActiveRecord::Base
     validates :description, presence: true
     validates :price, presence: true, format: {with: VALID_FLOAT_REGEX }
     validates :how_many, :numericality => { :greater_than => 0 }
+    validates :photo, presence: true
 end
