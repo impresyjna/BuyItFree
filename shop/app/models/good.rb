@@ -3,13 +3,13 @@ class Good < ActiveRecord::Base
     belongs_to :user
     belongs_to :category
     
-    VALID_FLOAT_REGEX = /\A[0-9\,]+\z/
+    VALID_FLOAT_REGEX = /\A[0-9]+[,|.]*[0-9]{0,2}\z/
     
     validates_attachment_content_type :photo, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
     
     validates :title, presence: true, length: { maximum: 150 }
     validates :description, presence: true
-    validates :price, presence: true, format: {with: VALID_FLOAT_REGEX }
+    validates :price, presence: true, :numericality => { :greater_than => 0 }
     validates :how_many, :numericality => { :greater_than => 0 }
     validates :photo, presence: true
 end

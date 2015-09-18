@@ -13,7 +13,7 @@
       <%= f.text_area :description, class: 'form-control' %>
       
       <%= f.label :price, "Cena" %>
-      <%= f.text_field :price, class: 'form-control' %>
+      <%= f.number_field :price, :class => 'form-control', :step => 0.01 %>
       
       <%= f.label :how_many, "Ilosć" %>
       <%= f.number_field :how_many, class: 'form-control' %>
