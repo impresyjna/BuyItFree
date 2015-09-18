@@ -4,8 +4,8 @@ class ContactsController < ApplicationController
   end
 
   def index
-    @contacts_with_respond = Contact.where("respond is not null").paginate(page: params[:page])
-    @contacts_without_respond = Contact.find_by(respond: nil).paginate(page: params[:page])
+    @contacts_with_respond = Contact.where("respond is not null")
+    @contacts_without_respond = Contact.find_by(respond: nil)
   end
 
   def edit
