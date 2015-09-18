@@ -1,17 +1,9 @@
 Rails.application.routes.draw do
-  get 'contacts/new'
-
-  get 'contacts/index'
-
-  get 'contacts/edit'
-
-  get 'goods/mine'
-
   get 'sessions/new'
 
   root             'static_pages#home'
   get 'about'   => 'static_pages#about'
-  get 'contact' => 'static_pages#contact'
+  get 'contact' => 'contacts#new'
   get 'rules'   => 'static_pages#rules'
   get 'signup'  => 'users#new'
   get    'login'   => 'sessions#new'
@@ -34,5 +26,6 @@ Rails.application.routes.draw do
   resources :categories
   resources :sellers, only:[:new, :create, :edit, :update]
   resources :goods
+  resources :contacts
 
 end

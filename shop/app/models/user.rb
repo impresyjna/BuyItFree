@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
     has_one :customer, dependent: :destroy
     has_one :seller, dependent: :destroy
     has_many :goods, dependent: :destroy
+    has_many :contacts, dependent: :destroy
     
     
     validates :name,  presence: true, length: { maximum: 50 }, uniqueness: { case_sensitive: false }
