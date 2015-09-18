@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'contacts/new'
+
+  get 'contacts/index'
+
+  get 'contacts/edit'
+
   get 'goods/mine'
 
   get 'sessions/new'
