@@ -1,4 +1,6 @@
 class CustomersController < ApplicationController
+  before_action :logged_in_user, only: [:edit, :update, :destroy, :new, :show, :index]
+  
   def new
     @customer = Customer.new
   end
