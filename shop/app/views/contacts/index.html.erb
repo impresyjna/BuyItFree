@@ -1,2 +1,14 @@
-<h1>Contacts#index</h1>
-<p>Find me in app/views/contacts/index.html.erb</p>
+<% provide(:title, 'Otrzymane wiadomosci') %>
+<h1>Otrzymane wiadomosci</h1>
+
+<%= will_paginate %>
+
+<ul class="contacts">
+    <%= render @contacts_with_respond %>
+</ul>
+
+<ul class="contacts">
+    <%= render @contacts_without_respond%>
+</ul>
+
+<%= will_paginate %>

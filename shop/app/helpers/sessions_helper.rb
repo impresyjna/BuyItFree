@@ -35,7 +35,9 @@ module SessionsHelper
   end
   
   def seller?(user)
-    user.account_type.to_s=="seller"
+    if(!user.nil?)
+      user.account_type.to_s=="seller"
+    end
   end
   
   def new_here?(user)

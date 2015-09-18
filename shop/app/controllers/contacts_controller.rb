@@ -4,7 +4,8 @@ class ContactsController < ApplicationController
   end
 
   def index
-    @contacts = Contact.paginate(page: params[:page])
+    @contacts_with_respond = Contact.where("respond is not null").paginate(page: params[:page])
+    @contacts_without_respond = Contact.find_by(respond: nil).paginate(page: params[:page])
   end
 
   def edit
@@ -29,7 +30,7 @@ class ContactsController < ApplicationController
   private
 
     def contact_params
-      params.require(:contact).permit(:title, :message, :response)
+      params.require(:contact).permit(:title, :message, :respond)
     end
     
 end
