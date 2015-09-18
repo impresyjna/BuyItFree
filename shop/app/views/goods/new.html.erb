@@ -20,6 +20,9 @@
       
       <%= f.label :photo, "Zdjęcie" %>
       <%= f.file_field :photo %>
+      
+      <%= f.label :category_id, "Kategoria" %>
+      <%= f.select :category_id, options_for_select(Category.pluck(:name, :id)) %>
  
       <%= f.submit "Zapisz", class: "btn btn-primary" %>
     <% end %>

@@ -14,7 +14,7 @@ class GoodsController < ApplicationController
   end
   
   def create
-    @good = current_user.goods.build(good_params)
+    @good = current_user.goods.create(good_params)
     if @good.save
       flash[:success] = "Dodano produkt"
       redirect_to current_user
@@ -22,6 +22,7 @@ class GoodsController < ApplicationController
       flash[:warning] = "Nie udało się dodać produktu" 
       render 'new'
     end
+
   end
   
   def mine
@@ -32,7 +33,7 @@ class GoodsController < ApplicationController
 
     def good_params
       params.require(:good).permit(:title, :price, :description,
-                                   :how_many, :photo)
+                                   :how_many, :photo, :category_id)
     end
     
 end
