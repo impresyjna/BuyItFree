@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   root             'static_pages#home'
   get 'about'   => 'static_pages#about'
-  get 'contact' => 'contacts#new'
+  get 'contact_us' => 'contacts#new'
   get 'rules'   => 'static_pages#rules'
   get 'signup'  => 'users#new'
   get    'login'   => 'sessions#new'

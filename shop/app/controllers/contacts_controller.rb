@@ -27,6 +27,16 @@ class ContactsController < ApplicationController
     end
   end
   
+  def update
+    @contact = Contact.find(params[:id])
+    if @contact.update_attributes(contact_params)
+      flash[:success] = "Wiadomosć wysłana"
+      redirect_to contacts_url
+    else
+      render 'edit'
+    end
+  end
+  
   private
 
     def contact_params

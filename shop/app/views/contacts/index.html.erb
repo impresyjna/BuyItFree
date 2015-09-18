@@ -1,10 +1,16 @@
 <% provide(:title, 'Otrzymane wiadomosci') %>
 <h1>Otrzymane wiadomosci</h1>
 
-<ul class="contacts">
-    <%= render @contacts_with_respond %>
-</ul>
+<% if !@contacts_with_respond.nil? %>
+    <h4>Z odpowiedziami</h4><br>
+    <ul class="contacts">
+        <%= render @contacts_with_respond %>
+    </ul>
+<% end %>
 
-<ul class="contacts">
-    <%= render @contacts_without_respond%>
-</ul>
+<% if !@contacts_without_respond.nil? %>
+    <h4>Bez odpowiedzi</h4><br>
+    <ul class="contacts">
+        <%= render @contacts_without_respond%>
+    </ul>
+<% end %>

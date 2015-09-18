@@ -1,2 +1,21 @@
-<h1>Contacts#edit</h1>
-<p>Find me in app/views/contacts/edit.html.erb</p>
+<% provide(:title, 'Odpowiedz') %>
+<h1>Odpowiedz</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@contact) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+      
+      <%= f.label :title, "Tytuł" %>
+      <%= @contact.title %>
+      
+      <%= f.label :message, "Wiadomosć" %>
+      <%= @contact.message %>
+      
+      <%= f.label :respond, "Odpowiedź" %>
+      <%= f.text_area :respond %>
+ 
+      <%= f.submit "Wyslij", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
