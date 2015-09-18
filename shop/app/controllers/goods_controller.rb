@@ -10,6 +10,7 @@ class GoodsController < ApplicationController
   end
 
   def edit
+    @good = Good.find(params[:id])
   end
 
   def index
@@ -25,7 +26,16 @@ class GoodsController < ApplicationController
       flash[:warning] = "Nie udało się dodać produktu" 
       render 'new'
     end
-
+  end
+  
+  def update
+    @good = Good.find(params[:id])
+    if @good.update_attributes(good_update_params)
+      flash[:success] = "Dane zaktualizowane"
+      redirect_to my_products_path
+    else
+      render 'edit'
+    end
   end
   
   def mine
@@ -37,6 +47,10 @@ class GoodsController < ApplicationController
     def good_params
       params.require(:good).permit(:title, :price, :description,
                                    :how_many, :photo, :category_id)
+    end
+    
+    def good_update_params
+      params.require(:good).permit(:how_many, :photo, :category_id)
     end
     
 end

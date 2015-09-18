@@ -1,2 +1,30 @@
-<h1>Goods#edit</h1>
-<p>Find me in app/views/goods/edit.html.erb</p>
+<% provide(:title, 'Edycja  ' + @good.title) %>
+<h1>Edycja produktu</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@good, :html => { :multipart => true }) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+
+      <%= f.label :title, "Tytuł" %>
+      <%= @good.title %>
+      
+      <%= f.label :description, "Opis" %>
+      <%= @good.description %>
+      
+      <%= f.label :price, "Cena" %>
+      <%= @good.price %> zł
+      
+      <%= f.label :how_many, "Ilosć" %>
+      <%= f.number_field :how_many, class: 'form-control' %>
+      
+      <%= f.label :photo, "Zdjęcie" %>
+      <%= f.file_field :photo %>
+      
+      <%= f.label :category_id, "Kategoria" %>
+      <%= f.select :category_id, options_for_select(Category.pluck(:name, :id)) %>
+ 
+      <%= f.submit "Zapisz", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
