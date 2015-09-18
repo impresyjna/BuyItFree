@@ -1,4 +1,6 @@
 class GoodsController < ApplicationController
+  before_action :logged_in_user, only: [:edit, :update, :destroy, :new]
+  
   def new
     @good = Good.new
   end
