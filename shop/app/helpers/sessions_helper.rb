@@ -24,14 +24,6 @@ module SessionsHelper
     end
   end
   
-  def current_order
-    if !session[:order_id].nil?
-      Order.find(session[:order_id])
-    else
-      Order.new
-    end
-  end
-  
   # Returns true if the user is logged in, false otherwise.
   def logged_in?
     !current_user.nil?
