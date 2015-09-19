@@ -29,6 +29,9 @@
                 <%= link_to "Wyloguj się", logout_path, method: "delete" %>
               </li>
             </ul>
+            <div class="col-xs-6 text-right">
+              <h1 class="cart-text"><%= render 'layouts/cart_text' %></h1>
+            </div>
           </li>
         <% else %>
           <li><%= link_to "Zaloguj się", login_path %></li>

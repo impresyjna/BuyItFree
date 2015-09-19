@@ -2,6 +2,7 @@ class Good < ActiveRecord::Base
     has_attached_file :photo, styles: { small: "64x64", med: "100x100", large: "200x200" }
     belongs_to :user
     belongs_to :category
+    has_many :order_items
     
     VALID_FLOAT_REGEX = /\A[0-9]+[,|.]*[0-9]{0,2}\z/
     
