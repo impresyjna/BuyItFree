@@ -27,7 +27,8 @@ Rails.application.routes.draw do
   resources :sellers, only:[:new, :create, :edit, :update]
   resources :goods
   resources :contacts
-  resources :cart, only: [:show]
-  resources :order_items, only: [:create, :update, :destroy]
+  resources :carts
+  resources :order_items
+  resources :orders
 
 end
