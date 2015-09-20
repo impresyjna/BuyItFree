@@ -1,7 +1,7 @@
 <li>
   <%= gravatar_for user, size: 50 %>
   <%= link_to user.name, user %>
-  | <%= link_to "delete", user, method: :delete,
-                                  data: { confirm: "You sure?" } %> 
-  | <%= link_to "show", user%>
+  <%= link_to "Usuń", user, method: :delete,
+                                  data: { confirm: "Czy na pewno chcesz usunąć użytkownika?" }, :class => "btn btn-xs btn-danger" %> 
+  <%= link_to "Pokaż", user, :class => "btn btn-xs btn-info" %>
 </li>

@@ -8,17 +8,21 @@
       
       <%= f.label :description, "Opis" %>
       <%= @good.description %><br>
-      
+       
       <%= f.label :price, "Cena" %>
       <%= @good.price %> zł<br>
       
       <%= f.label :how_many, "Ilosć" %>
       <%= @good.how_many %><br>
       
+      <%= f.label :send_ways, "Metody wysyłki" %>
+      <ul class="send_ways">
+        <%= render @good.send_ways %>
+      </ul>
       <%= link_to image_tag(@good.photo.url(:large)), @good.photo.url %>
       
       
-      <%= link_to "<button>KUP TERAZ</button>".html_safe, root_path, :class => "btn btn-success" %>
+      <br><%= link_to "<span class=\"glyphicon glyphicon-shopping-cart\" aria-hidden=\"true\"/> KUP TERAZ".html_safe, new_order_item_path(:good_id => params[:id]), :class => "btn btn-lg btn-success" %>
       
       
     

@@ -6,27 +6,27 @@
     <%= form_for(@good, :html => { :multipart => true }) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
 
-      <%= f.label :title, "Tytuł" %>
-      <%= f.text_field :title, class: 'form-control' %>
+      <%= f.label :title, "Tytuł", class: 'required' %>
+      <%= f.text_field :title, class: 'form-control', :required => true %>
       
-      <%= f.label :description, "Opis" %>
-      <%= f.text_area :description, class: 'form-control' %>
+      <%= f.label :description, "Opis", class: 'required' %>
+      <%= f.text_area :description, class: 'form-control', :required => true %>
       
-      <%= f.label :price, "Cena" %>
-      <%= f.number_field :price, :class => 'form-control', :step => 0.01 %>
+      <%= f.label :price, "Cena", class: 'required' %>
+      <%= f.number_field :price, :class => 'form-control', :step => 0.01, :required => true %>
       
-      <%= f.label :how_many, "Ilosć" %>
-      <%= f.number_field :how_many, class: 'form-control' %>
+      <%= f.label :how_many, "Ilosć", class: 'required' %>
+      <%= f.number_field :how_many, class: 'form-control', :required => true %>
       
-      <%= f.label :photo, "Zdjęcie" %>
-      <%= f.file_field :photo %>
+      <%= f.label :photo, "Zdjęcie", class: 'required' %>
+      <%= f.file_field :photo, :required => true %>
       
       <%= f.label :category_id, "Kategoria" %>
       <%= f.select :category_id, options_for_select(Category.pluck(:name, :id)) %>
       
       <%= f.fields_for :send_ways, @good.send_ways.build do |s| %>
           <%= render :partial => "goods/send_way", :locals => {:f => s, :form_actions_visible => false} %>    
-      <% end -%>
+      <% end %>
       <div class="add-field-links">
           <%= link_to_add_association '<i></i> Dodaj metodę wysyłki'.html_safe, f, :send_ways, :partial => 'goods/send_way',
           :render_options => {:locals => {:form_actions_visible => 'false', :show_features => true, 

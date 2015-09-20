@@ -12,7 +12,7 @@ class Seller < ActiveRecord::Base
     validates :name, presence: true, format: {with: VALID_WORD_REGEX }, length: { maximum: 50 }
     validates :surname, presence: true, format: {with: VALID_WORD_REGEX }, length: { maximum: 50 }
     validates :address, presence: true, length: { maximum: 100 }
-    validates :telephone, numericality: true, length: { :minimum => 7, :maximum => 15 }
+    validates :telephone, numericality: true, length: { :minimum => 9, :maximum => 15 }
     
     #Part to be a seller 
     validates :account_number, presence: true, format: {with: VALID_ACCOUNT_REGEX, message: "Niepoprawny numer konta" }
@@ -21,12 +21,12 @@ class Seller < ActiveRecord::Base
     validates_format_of :company_name, :with => VALID_WORD_REGEX, :allow_blank => true
     validates_format_of :company_city, :with => VALID_WORD_REGEX, :allow_blank => true
     
-    validates_presence_of :company_address, :if => :company_post_code?
-    validates_presence_of :company_city, :if => :company_post_code?
-    validates_presence_of :company_address, :if => :company_city?
-    validates_presence_of :company_city, :if => :company_address?
-    validates_presence_of :company_post_code, :if => :company_address?
-    validates_presence_of :company_post_code, :if => :company_city?
+    validates_presence_of :company_address, :if => :company_post_code?, :message => "Można zapisać albo całkowity brak adresu, albo pełen adres!"
+    validates_presence_of :company_city, :if => :company_post_code?, :message => "Można zapisać albo całkowity brak adresu, albo pełen adres!"
+    validates_presence_of :company_address, :if => :company_city?, :message => "Można zapisać albo całkowity brak adresu, albo pełen adres!"
+    validates_presence_of :company_city, :if => :company_address?, :message => "Można zapisać albo całkowity brak adresu, albo pełen adres!"
+    validates_presence_of :company_post_code, :if => :company_address?, :message => "Można zapisać albo całkowity brak adresu, albo pełen adres!"
+    validates_presence_of :company_post_code, :if => :company_city?, :message => "Można zapisać albo całkowity brak adresu, albo pełen adres!"
     
     
 end
