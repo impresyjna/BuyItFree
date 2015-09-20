@@ -4,7 +4,7 @@
       <div class="caption">
          <h4 class="pull-right"><%= good.price %> zł</h4>
          <h4><%= link_to good.title, good %></h4>
-         <% if seller?(current_user) %>
+         <% if seller?(current_user) and good.user_id == current_user.id %>
          <h4><%= link_to "Edytuj", edit_good_path(good) %> </h4>
          <% end %>
       </div>

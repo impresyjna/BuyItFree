@@ -1,0 +1,23 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Zamówienie nr <%= order.id %></h3>
+    </div>
+    <div class="panel-body">
+        <h4>Przedmioty</h4>
+            <% @order_items = order.order_items %>
+            <%=  render @order_items %> <br>
+            
+        <h4>Dane transakcji</h4>
+        <li class="list-group-item">
+            Kto: <%=  Customer.find(order.customer_id).name + " " + Customer.find(order.customer_id).surname %> <br>
+            Kwota do zapłaty: <%= order.total_price  %> <br>
+            <% @send_way = SendWay.find(order.send_way_id).name %>
+            <% @order_state = OrderState.find(order.order_state_id).name %>
+            Sposób przesyłki: <%=  @send_way %> <br>
+            Status przesyłki: <%=  @order_state %> <br>
+            <% if seller?(current_user) and order.seller_id==current_user.id %>
+                Edycja
+            <% end %>
+        </li>
+    </div>
+</div>

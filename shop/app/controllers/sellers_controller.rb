@@ -11,8 +11,11 @@ class SellersController < ApplicationController
   
   def create
     @seller = Seller.new(seller_params)
+    @customer = Customer.new(customer_params)
+    @customer.save
     if @seller.save
       current_user.seller = @seller
+      current_user.customer = @customer
       flash[:success] = "Zapisano dane"
       redirect_to current_user
     else
@@ -38,6 +41,11 @@ class SellersController < ApplicationController
                                    :post_code, :city, :telephone,  :account_number, 
                                    :company_name, :company_address, 
                                    :company_post_code, :company_city, :company_number)
+    end
+    
+    def customer_params
+      params.require(:seller).permit(:name, :surname, :address,
+                                   :post_code, :city, :telephone)
     end
   
 end

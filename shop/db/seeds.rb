@@ -12,3 +12,12 @@ OrderState.create! id: 2, name: "Do skompletowania"
 OrderState.create! id: 3, name: "Skompletowane"
 OrderState.create! id: 4, name: "Wysłane"
 OrderState.create! id: 5, name: "Anulowane"
+
+Category.delete_all
+Category.create! id: 1, name: "Elektronika"
+Category.create! id: 2, name: "Ubrania"
+Category.create! id: 3, name: "Książki"
+Category.create! id: 4, name: "Perfumy"
+Category.create! id: 5, name: "Fotografia"
+Category.create! id: 6, name: "Rękodzieło"
+Category.create! id: 7, name: "Sport"

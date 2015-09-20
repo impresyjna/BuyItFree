@@ -19,11 +19,18 @@ class OrdersController < ApplicationController
       @total_amount = @total_amount + @good.price * o.how_many
       @seller = Seller.find(@good.user_id)
     end
+    @total_amount = @total_amount + @send_way.price
     
   end
 
   def update
     @order = Order.find(params[:id])
+    @ordered_items = @order.order_items
+    @ordered_items.each do |o|
+      @good = Good.find(o.good_id)
+      @good.how_many = @good.how_many - o.how_many
+      @good.save
+    end
     if @order.update_attributes(order_params)
       flash[:success] = "Zamówienie zostało zgłoszone do realizacji"
       redirect_to @order
@@ -35,6 +42,14 @@ class OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
     @seller = Seller.find(@order.seller_id)
+  end
+  
+  def my_orders
+    @orders = Order.where(customer_id: current_user.id)
+  end
+  
+  def customers_orders
+    @orders = Order.where(seller_id: current_user.id)
   end
   
   private
