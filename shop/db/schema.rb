@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150919101252) do
+ActiveRecord::Schema.define(version: 20150919233350) do
+
+  create_table "baskets", force: :cascade do |t|
+    t.integer  "user_id"
+    t.float    "total_price"
+    t.integer  "total_count"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "baskets", ["user_id"], name: "index_baskets_on_user_id"
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -67,34 +77,41 @@ ActiveRecord::Schema.define(version: 20150919101252) do
   add_index "goods", ["user_id"], name: "index_goods_on_user_id"
 
   create_table "order_items", force: :cascade do |t|
+    t.integer  "basket_id"
+    t.integer  "user_id"
     t.integer  "good_id"
+    t.integer  "how_many"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer  "order_id"
-    t.decimal  "unit_price",  precision: 12, scale: 3
-    t.integer  "quantity"
-    t.decimal  "total_price", precision: 12, scale: 3
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
   end
 
+  add_index "order_items", ["basket_id"], name: "index_order_items_on_basket_id"
   add_index "order_items", ["good_id"], name: "index_order_items_on_good_id"
   add_index "order_items", ["order_id"], name: "index_order_items_on_order_id"
+  add_index "order_items", ["user_id"], name: "index_order_items_on_user_id"
 
-  create_table "order_statuses", force: :cascade do |t|
+  create_table "order_states", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "orders", force: :cascade do |t|
-    t.decimal  "subtotal",        precision: 12, scale: 3
-    t.decimal  "shipping",        precision: 12, scale: 3
-    t.decimal  "total",           precision: 12, scale: 3
-    t.integer  "order_status_id"
-    t.datetime "created_at",                               null: false
-    t.datetime "updated_at",                               null: false
+    t.integer  "order_state_id"
+    t.integer  "customer_id"
+    t.integer  "seller_id"
+    t.float    "total_price"
+    t.integer  "total_count"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "send_way_id"
   end
 
-  add_index "orders", ["order_status_id"], name: "index_orders_on_order_status_id"
+  add_index "orders", ["customer_id"], name: "index_orders_on_customer_id"
+  add_index "orders", ["order_state_id"], name: "index_orders_on_order_state_id"
+  add_index "orders", ["seller_id"], name: "index_orders_on_seller_id"
+  add_index "orders", ["send_way_id"], name: "index_orders_on_send_way_id"
 
   create_table "sellers", force: :cascade do |t|
     t.string   "name"
@@ -116,6 +133,17 @@ ActiveRecord::Schema.define(version: 20150919101252) do
 
   add_index "sellers", ["user_id", "created_at"], name: "index_sellers_on_user_id_and_created_at"
   add_index "sellers", ["user_id"], name: "index_sellers_on_user_id"
+
+  create_table "send_ways", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "good_id"
+    t.integer  "how_many_days"
+    t.float    "price"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "send_ways", ["good_id"], name: "index_send_ways_on_good_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "name"

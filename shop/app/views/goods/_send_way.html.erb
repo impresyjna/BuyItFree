@@ -1,0 +1,21 @@
+<div class="send_way">
+    
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Metoda wysyłki</h3>
+        </div>
+        <div class="panel-body">
+            <ul class="list-group">
+                    <%= f.label :name, "Opis" %>
+                    <%= f.text_field :name, class: 'form-control' %>
+                      
+                    <%= f.label :price, "Cena" %>
+                    <%= f.number_field :price, :class => 'form-control', :step => 0.01 %>
+                      
+                    <%= f.label :how_many_days, "Ilosć" %>
+                    <%= f.number_field :how_many_days, class: 'form-control' %>
+            </ul>
+        </div>
+    </div>
+
+</div>

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+  resources :send_ways
   get 'sessions/new'
 
   root             'static_pages#home'
@@ -18,6 +20,7 @@ Rails.application.routes.draw do
   get 'add_product' => 'goods#new'
   get 'my_products' => 'goods#mine'
   get 'all_products' => 'goods#index'
+  post 'buy' => 'goods#buy'
   
   resources :users
   resources :account_activations, only: [:edit]
@@ -30,5 +33,7 @@ Rails.application.routes.draw do
   resources :carts
   resources :order_items
   resources :orders
-
+  resources :send_ways
+  resources :baskets
+  
 end

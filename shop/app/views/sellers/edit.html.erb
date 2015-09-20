@@ -6,25 +6,25 @@
     <%= form_for(@seller) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
 
-      <%= f.label :name, "Imię" %>
-      <%= f.text_field :name, class: 'form-control' %>
+      <%= f.label :name, "Imię (wymagane)" %>
+      <%= f.text_field :name, class: 'form-control', :required => true %>
 
-      <%= f.label :surname, "Nazwisko" %>
-      <%= f.text_field :surname, class: 'form-control' %>
+      <%= f.label :surname, "Nazwisko (wymagane)" %>
+      <%= f.text_field :surname, class: 'form-control', :required => true %>
 
-      <%= f.label :address, "Adres" %>
-      <%= f.text_field :address, class: 'form-control' %>
+      <%= f.label :address, "Adres (wymagane)" %>
+      <%= f.text_field :address, class: 'form-control', :required => true %>
 
-      <%= f.label :post_code, "Kod pocztowy" %>
-      <%= f.text_field :post_code, class: 'form-control' %>
+      <%= f.label :post_code, "Kod pocztowy (wymagane)" %>
+      <%= f.text_field :post_code, class: 'form-control', :required => true %>
       
-      <%= f.label :city, "Miejscowość" %>
-      <%= f.text_field :city, class: 'form-control'  %>
+      <%= f.label :city, "Miejscowość (wymagane)" %>
+      <%= f.text_field :city, class: 'form-control', :required => true  %>
       
-      <%= f.label :telephone, "Telefon" %>
-      <%= f.text_field :telephone, class: 'form-control'  %>
+      <%= f.label :telephone, "Telefon (wymagane)" %>
+      <%= f.text_field :telephone, class: 'form-control', :required => true  %>
       
-      <%= f.label :account_number, "Numer konta" %>
+      <%= f.label :account_number, "Numer konta (wymagane)" %>
       <%= f.text_field :account_number, class: 'form-control'  %>
       
       <%= f.label :company_name, "Nazwa firmy" %>

@@ -3,11 +3,11 @@ class GoodsController < ApplicationController
   
   def new
     @good = Good.new
+    @good.send_ways.build
   end
 
   def show
    @good = Good.find(params[:id])
-   @order_item = current_order.order_items.new
   end
 
   def edit
@@ -20,6 +20,8 @@ class GoodsController < ApplicationController
   
   def create
     @good = current_user.goods.create(good_params)
+    @good.send_ways.build
+    #puts params[send_ways: [:name, :price, :how_many_days]]
     if @good.save
       flash[:success] = "Dodano produkt"
       redirect_to current_user
@@ -43,13 +45,17 @@ class GoodsController < ApplicationController
     @goods = current_user.goods.paginate(page: params[:page])
   end
   
+  def buy
+    flash[:success] = "Zakupiono"
+  end
+  
   private
 
     def good_params
       params.require(:good).permit(:title, :price, :description,
-                                   :how_many, :photo, :category_id)
+                                   :how_many, :photo, :category_id, send_ways_attributes: [:name, :price, :how_many_days])
     end
-    
+
     def good_update_params
       params.require(:good).permit(:how_many, :photo, :category_id)
     end

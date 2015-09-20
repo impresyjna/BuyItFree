@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  good_id: 
+  how_many_days: 1
+  price: 1.5
+
+two:
+  name: MyString
+  good_id: 
+  how_many_days: 1
+  price: 1.5

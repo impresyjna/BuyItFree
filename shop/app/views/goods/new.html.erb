@@ -23,6 +23,15 @@
       
       <%= f.label :category_id, "Kategoria" %>
       <%= f.select :category_id, options_for_select(Category.pluck(:name, :id)) %>
+      
+      <%= f.fields_for :send_ways, @good.send_ways.build do |s| %>
+          <%= render :partial => "goods/send_way", :locals => {:f => s, :form_actions_visible => false} %>    
+      <% end -%>
+      <div class="add-field-links">
+          <%= link_to_add_association '<i></i> Dodaj metodę wysyłki'.html_safe, f, :send_ways, :partial => 'goods/send_way',
+          :render_options => {:locals => {:form_actions_visible => 'false', :show_features => true, 
+          :fieldset_label => 'Vehicle Details'}}, :class => 'btn' %>
+      </div>
  
       <%= f.submit "Zapisz", class: "btn btn-primary" %>
     <% end %>

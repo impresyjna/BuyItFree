@@ -1,8 +1,11 @@
 class Good < ActiveRecord::Base
-    has_attached_file :photo, styles: { small: "64x64", med: "100x100", large: "200x200" }
+    has_attached_file :photo, styles: { small: "64x64", med: "100x100", large: "500x500" }
     belongs_to :user
     belongs_to :category
     has_many :order_items
+    has_many :send_ways, :dependent => :destroy
+    
+    accepts_nested_attributes_for :send_ways, :reject_if => :all_blank, :allow_destroy => true
     
     VALID_FLOAT_REGEX = /\A[0-9]+[,|.]*[0-9]{0,2}\z/
     
