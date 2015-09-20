@@ -17,7 +17,7 @@ class OrdersController < ApplicationController
     @ordered_items.each do |o|
       @good = Good.find(o.good_id)
       @total_amount = @total_amount + @good.price * o.how_many
-      @seller = Seller.find(@good.user_id)
+      @seller = Seller.find_by(user_id: @good.user_id)
     end
     @total_amount = @total_amount + @send_way.price
     
@@ -49,7 +49,11 @@ class OrdersController < ApplicationController
   end
   
   def customers_orders
-    @orders = Order.where(seller_id: current_user.id)
+    @orders = Order.where(seller_id: Seller.find_by(user_id: current_user).id)
+  end
+  
+  def change_state
+    @order = Order.find(params[:order_id])
   end
   
   private

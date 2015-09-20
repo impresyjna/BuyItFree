@@ -16,7 +16,7 @@
             Sposób przesyłki: <%=  @send_way %> <br>
             Status przesyłki: <%=  @order_state %> <br>
             <% if seller?(current_user) and order.seller_id==current_user.id %>
-                Edycja
+                <%= link_to "Edycja", change_state_path(:order_id => order) %>
             <% end %>
         </li>
     </div>

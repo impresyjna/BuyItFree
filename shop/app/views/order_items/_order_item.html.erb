@@ -1,7 +1,10 @@
-<li class="list-group-item">
+
     <% @good = Good.find(order_item.good_id) %>
-    <%= link_to image_tag(@good.photo.url(:small)), @good.photo.url %>
-    <%= @good.title %>
-    <%= @good.price %>
-    <%= order_item.how_many%>
-</li>
+    <div class="col-md-3">
+        <%= link_to image_tag(@good.photo.url(:small)), @good.photo.url %>
+    </div>
+    <div class="col-md-9">
+        Nazwa: <%= @good.title %> <br>
+        Cena: <%= @good.price %> <br>
+        Ilosć: <%= order_item.how_many%>
+    </div>

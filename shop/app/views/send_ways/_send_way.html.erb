@@ -1,7 +1,7 @@
 <% if !send_way.name.nil? %>
-    <li>
-        <%= send_way.name %>
-        <%= send_way.price %>
-        <%= send_way.how_many_days %>
-    </li>
+        <tr>
+            <td><%= send_way.name %></td>
+            <td><%= send_way.price %> zł</td>
+            <td><%= send_way.how_many_days %></td>
+        </tr>
 <% end %>

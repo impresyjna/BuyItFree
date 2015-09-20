@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   get 'all_products' => 'goods#index'
   get 'my_orders' => 'orders#my_orders'
   get 'customers_orders' => 'orders#customers_orders'
+  get 'change_state' => 'orders#change_state'
   
   resources :users
   resources :account_activations, only: [:edit]

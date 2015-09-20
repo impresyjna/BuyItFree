@@ -15,9 +15,22 @@
       <%= f.label :how_many, "Ilosć" %>
       <%= @good.how_many %><br>
       
+      
       <%= f.label :send_ways, "Metody wysyłki" %>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Nazwa metody</th>
+            <th>Cena</th>
+            <th>Dni oczekiwania</th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= render @good.send_ways %>
+        </tbody>
+      </table>
       <ul class="send_ways">
-        <%= render @good.send_ways %>
+
       </ul>
       <%= link_to image_tag(@good.photo.url(:large)), @good.photo.url %>
       

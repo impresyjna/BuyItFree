@@ -34,6 +34,10 @@ class SellersController < ApplicationController
     end
   end
   
+  def index
+    @sellers = Seller.all
+  end
+  
   private
 
     def seller_params
