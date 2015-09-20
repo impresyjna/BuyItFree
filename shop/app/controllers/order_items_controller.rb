@@ -31,6 +31,14 @@ class OrderItemsController < ApplicationController
   def destroy
   end
   
+  def my_orders
+    @orders = Order.where(customer_id: current_user.id)
+  end
+  
+  def customers_orders
+    @orders = Order.where(seller_id: current_user.id)
+  end
+  
   private
       def order_item_params
         params.require(:order_item).permit(:good_id, :how_many, order_attributes: [:send_way_id])

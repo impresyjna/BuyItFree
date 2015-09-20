@@ -21,7 +21,8 @@ Rails.application.routes.draw do
   get 'add_product' => 'goods#new'
   get 'my_products' => 'goods#mine'
   get 'all_products' => 'goods#index'
-  post 'buy' => 'goods#buy'
+  get 'my_orders' => 'orders#my_orders'
+  get 'customers_orders' => 'orders#customers_orders'
   
   resources :users
   resources :account_activations, only: [:edit]
