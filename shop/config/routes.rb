@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :order_states
   resources :send_ways
   get 'sessions/new'
 

@@ -1,3 +1,25 @@
 // Place all the styles related to the Sellers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+ 
+a.podpowiedz span {
+    display: none;
+    padding: 2px 3px;
+    margin-left: 8px;
+    width: 130px;
+}
+
+a.podpowiedz:hover span{
+    display: inline;
+    position: absolute;
+	margin: 15px 0 0 5px;
+    background: #dddddd;
+    border: 1px solid #dddddd;
+    color: #000000;
+	-moz-opacity: 0.8;
+	opacity:.80;
+	filter: alpha(opacity=80);
+	text-align: center;
+}
+

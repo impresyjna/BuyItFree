@@ -6,38 +6,38 @@
     <%= form_for(@seller) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
 
-      <%= f.label :name, "Imię (wymagane)" %>
-      <%= f.text_field :name, class: 'form-control' %>
+      <%= f.label :name, "Imię", class: 'required' %>
+      <%= f.text_field :name, class: 'form-control', :required => true %>
 
-      <%= f.label :surname, "Nazwisko (wymagane)" %>
+      <%= f.label :surname, "Nazwisko", class: 'required' %>
       <%= f.text_field :surname, class: 'form-control', :required => true %>
 
-      <%= f.label :address, "Adres (wymagane)" %>
+      <%= f.label :address, "Adres", class: 'required' %>
       <%= f.text_field :address, class: 'form-control', :required => true %>
 
-      <%= f.label :post_code, "Kod pocztowy (wymagane)" %>
+      <%= f.label :post_code, "Kod pocztowy", class: 'required' %>
       <%= f.text_field :post_code, class: 'form-control', :required => true %>
       
-      <%= f.label :city, "Miejscowość (wymagane)" %>
+      <%= f.label :city, "Miejscowość", class: 'required' %>
       <%= f.text_field :city, class: 'form-control', :required => true  %>
       
-      <%= f.label :telephone, "Telefon (wymagane)" %>
+      <%= f.label :telephone, "Telefon", class: 'required' %>
       <%= f.text_field :telephone, class: 'form-control', :required => true  %>
       
-      <%= f.label :account_number, "Numer konta (wymagane)" %>
-      <%= f.text_field :account_number, class: 'form-control', :required => true  %>
+      <%= f.label :account_number, "<a class=\"podpowiedz\" href=\"#\">Numer konta<span>Wprowadź numer konta BEZ SPACJI!</span></a>".html_safe, class: 'required' %>
+      <%= f.text_field :account_number, class: 'form-control', :required => true, :placeholder => "Numer konta BEZ SPACJI!"  %>
       
       <%= f.label :company_name, "Nazwa firmy" %>
       <%= f.text_field :company_name, class: 'form-control'  %>
       
-      <%= f.label :company_address, "Adres firmy" %>
-      <%= f.text_field :company_address, class: 'form-control'  %>
+      <%= f.label :company_address, "Adres firmy", class: 'required' %>
+      <%= f.text_field :company_address, class: 'form-control', :required => true  %>
       
-      <%= f.label :company_post_code, "Kod pocztowy firmy" %>
-      <%= f.text_field :company_post_code, class: 'form-control'  %>
+      <%= f.label :company_post_code, "Kod pocztowy firmy", class: 'required' %>
+      <%= f.text_field :company_post_code, class: 'form-control', :required => true  %>
       
-      <%= f.label :company_city, "Miejscowość firmy" %>
-      <%= f.text_field :company_city, class: 'form-control'  %>
+      <%= f.label :company_city, "Miejscowość firmy", class: 'required' %>
+      <%= f.text_field :company_city, class: 'form-control', :required => true  %>
       
       <%= f.label :company_number, "Telefon do firmy" %>
       <%= f.text_field :company_number, class: 'form-control'  %>

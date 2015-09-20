@@ -272,3 +272,8 @@ span.picture {
 .well>div {
   margin-bottom: 10px;
 }
+
+label.required:after {
+    content: " *";
+    color: red;
+}
