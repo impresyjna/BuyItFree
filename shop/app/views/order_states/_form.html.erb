@@ -12,10 +12,10 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.label :name, "Nazwa", class: 'required' %><br>
+    <%= f.text_field :name, :required => true %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Utwórz stan zamówienia", :class => "btn btn-success" %>
   </div>
 <% end %>

@@ -1,2 +1,46 @@
-<h1>Orders#show</h1>
-<p>Find me in app/views/orders/show.html.erb</p>
+<% provide(:title, 'Dane do przelewu') %>
+
+<h1>Dane do przelewu<br></h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@seller) do |f| %>
+
+      <%= f.label :name, "Imię" %>
+      <%= @seller.name %>
+
+      <%= f.label :surname, "Nazwisko" %>
+      <%= @seller.surname %>
+
+      <%= f.label :address, "Adres" %>
+      <%= @seller.address %>
+
+      <%= f.label :post_code, "Kod pocztowy"%>
+      <%= @seller.post_code %>
+      
+      <%= f.label :city, "Miejscowość" %>
+      <%= @seller.city  %>
+      
+      <%= f.label :telephone, "Telefon" %>
+      <%= @seller.telephone %>
+      
+      <%= f.label :account_number %>
+      <%= @seller.account_number  %>
+      
+      <%= f.label :company_name, "Nazwa firmy" %>
+      <%= @seller.company_name %>
+      
+      <%= f.label :company_address, "Adres firmy" %>
+      <%= @seller.company_address %>
+      
+      <%= f.label :company_post_code, "Kod pocztowy firmy" %>
+      <%= @seller.company_post_code %>
+      
+      <%= f.label :company_city, "Miejscowość firmy" %>
+      <%= @seller.company_city %>
+      
+      <%= f.label :company_number, "Telefon do firmy" %>
+      <%= @seller.company_number  %>
+    <% end %>
+  </div>
+</div>

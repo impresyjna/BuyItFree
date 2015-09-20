@@ -16,9 +16,12 @@ class OrderItemsController < ApplicationController
   end
 
   def create
+    @order = Order.new()
+    @order.save
     @order_item = current_user.order_items.create(order_item_params)
+    @order_item = @order.order_items.create(order_item_params)
     if @order_item.save
-      redirect_to new_order_path(:send_way_id => params[:order_item][:order][:send_way_id])
+      redirect_to edit_order_path(@order.id, :send_way_id => params[:order_item][:order][:send_way_id])
     else
       flash[:warning] = "Nie udało się zamówić" 
       render 'new'

@@ -1,2 +1,59 @@
-<h1>Orders#edit</h1>
-<p>Find me in app/views/orders/edit.html.erb</p>
+<% provide(:title, 'Potwierdzenie zamówienia' ) %>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Wybrane przedmioty</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="list-group">
+            <%= render @ordered_items  %>
+        </ul>
+    </div>
+</div>
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Sposób przesyłki</h3>
+    </div>
+    <div class="panel-body">
+        <li class="list-group-item">
+            <%=  @send_way.name %>
+            <%= @send_way.price %>
+            <%= @send_way.how_many_days %>
+        </li>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Liczba elementów</h3>
+    </div>
+    <div class="panel-body">
+        <li class="list-group-item">
+            <%= @total_count %>
+        </li>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Kwota do zapłaty</h3>
+    </div>
+    <div class="panel-body">
+        <li class="list-group-item">
+            <%= @total_amount %> zł
+        </li>
+    </div>
+</div>
+
+<%= form_for(@order) do |f| %>
+        <%= f.hidden_field :order_state_id, :value => 2 %>
+        <%= f.hidden_field :customer_id, :value => current_user.id %>
+        <%= f.hidden_field :seller_id, :value => @seller.id %>
+        <%= f.hidden_field :total_price, :value => @total_amount %>
+        <%= f.hidden_field :total_count, :value => @total_count %>
+        <%= f.hidden_field :send_way_id, :value => params[:send_way_id]%>
+        
+        <%= f.submit "Przejdź do potwierdzenia", class: "btn btn-primary" %>
+<% end %>

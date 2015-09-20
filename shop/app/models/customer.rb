@@ -1,5 +1,6 @@
 class Customer < ActiveRecord::Base
     belongs_to :user
+    has_many :orders
   
     VALID_POST_CODE_REGEX = /\d{2}-\d{3}\z/
     VALID_WORD_REGEX = /\A\D+\z/
