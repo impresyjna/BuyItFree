@@ -21,7 +21,6 @@ class GoodsController < ApplicationController
   def create
     @good = current_user.goods.create(good_params)
     @good.send_ways.build
-    #puts params[send_ways: [:name, :price, :how_many_days]]
     if @good.save
       flash[:success] = "Dodano produkt"
       redirect_to current_user
