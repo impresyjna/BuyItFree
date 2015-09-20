@@ -2,13 +2,19 @@
 
 <h1>Dodaj przedmiot<br></h1>
 
-
-      <%= @item.title %><br>
-      <%= @item.price %> zł<br>
+    <div class="col-md-3">
       <%= link_to image_tag(@item.photo.url(:small)), @item.photo.url %>
+    </div>
+    
+    <div class="col-md-9">
+      Nazwa przedmiotu: <%= @item.title %><br>
+      Cena: <%= @item.price %> zł<br>
+      Ilosć wystawionych: <%= @item.how_many %> sztuk <br>
+    </div>
+
 
 <%= form_for(@order_item) do |f| %>
-        <%= f.label :how_many, "Ilosć", class: 'required' %>
+        <%= f.label :how_many, "Ile kupić", class: 'required' %>
         <%= f.number_field :how_many, class: 'form-control', :required => true %>
         
         <%= f.hidden_field :good_id, :value => @item.id %>

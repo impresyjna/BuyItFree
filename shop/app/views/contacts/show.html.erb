@@ -1,15 +1,16 @@
 <% provide(:title, 'Wiadomosc') %>
-<h1>Temat: <%= @contact.title %></h1>
+<h1><%= @contact.title %></h1>
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_for(@contact) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
       
-      <%= f.label :message, "Wiadomosc" %>
       <%= @contact.message %>
       
-      <%= link_to "Odpowiedz", edit_contact_path(@contact) %>
+      <center><br><br>
+      <%= link_to "<span class=\"glyphicon glyphicon-envelope\" aria-hidden=\"true\"></span> Odpowiedz".html_safe, edit_contact_path(@contact), :class => "btn btn-lg btn-success" %>
+      </center>
       
     <% end %>
   </div>

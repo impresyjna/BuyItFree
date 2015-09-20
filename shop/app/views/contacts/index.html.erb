@@ -2,14 +2,14 @@
 <h1>Otrzymane wiadomości</h1>
 
 <% if !@contacts_with_respond.nil? %>
-    <h4>Z odpowiedziami</h4><br>
+    <h4><span class="label label-success">Z odpowiedziami</span></h4><br>
     <ul class="contacts">
         <%= render @contacts_with_respond %>
     </ul>
 <% end %>
 
 <% if !@contacts_without_respond.nil? %>
-    <h4>Bez odpowiedzi</h4><br>
+    <br><br><h4><span class="label label-danger">Bez odpowiedzi</span></h4><br>
     <ul class="contacts">
         <%= render @contacts_without_respond%>
     </ul>
