@@ -15,7 +15,7 @@
       <%= f.label :respond, "Odpowiedź:" %>
       <%= f.text_area :respond %>
  
-      <%= f.submit "Wyslij", class: "btn btn-primary" %>
+      <%= f.submit "Wyslij".html_safe, class: "btn btn-primary" %>
     <% end %>
   </div>
 </div>
