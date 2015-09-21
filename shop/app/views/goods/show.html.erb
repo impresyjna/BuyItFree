@@ -34,9 +34,9 @@
       </ul>
       <%= link_to image_tag(@good.photo.url(:large)), @good.photo.url %>
       
-      
-      <br><%= link_to "<span class=\"glyphicon glyphicon-shopping-cart\" aria-hidden=\"true\"/> KUP TERAZ".html_safe, new_order_item_path(:good_id => params[:id]), :class => "btn btn-lg btn-success" %>
-      
+      <% if Good.find(params[:id]).user_id != current_user.id %>
+        <br><%= link_to "<span class=\"glyphicon glyphicon-shopping-cart\" aria-hidden=\"true\"/> KUP TERAZ".html_safe, new_order_item_path(:good_id => params[:id]), :class => "btn btn-lg btn-success" %>
+      <% end %>
       
     
       

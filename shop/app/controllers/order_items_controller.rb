@@ -1,4 +1,6 @@
 class OrderItemsController < ApplicationController
+  before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
+  
   def new
     @order_item = OrderItem.new
     @order_item.good_id = params[:good_id]

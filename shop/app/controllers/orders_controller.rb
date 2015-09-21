@@ -1,4 +1,6 @@
 class OrdersController < ApplicationController
+  before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
+  
   def index
   end
 
@@ -24,18 +26,25 @@ class OrdersController < ApplicationController
   end
 
   def update
-    @order = Order.find(params[:id])
-    @ordered_items = @order.order_items
-    @ordered_items.each do |o|
-      @good = Good.find(o.good_id)
-      @good.how_many = @good.how_many - o.how_many
-      @good.save
-    end
-    if @order.update_attributes(order_params)
-      flash[:success] = "Zamówienie zostało zgłoszone do realizacji"
-      redirect_to @order
-    else
-      render 'edit'
+    Order.transaction do
+      begin
+        @order = Order.find(params[:id])
+        @ordered_items = @order.order_items
+        @ordered_items.each do |o|
+          @good = Good.find(o.good_id)
+          @good.how_many = @good.how_many - o.how_many
+          @good.save
+          puts @good.how_many
+        end
+        if @order.update_attributes(order_params)
+          flash[:success] = "Zamówienie zostało zgłoszone do realizacji"
+          redirect_to @order
+        else
+          render 'edit'
+        end
+      rescue ActiveRecord::StatementInvalid
+        flash[:error] = "Towar został już wyprzedany"
+      end
     end
   end
 

@@ -14,6 +14,6 @@ class Good < ActiveRecord::Base
     validates :title, presence: true, length: { maximum: 150 }
     validates :description, presence: true
     validates :price, presence: true, :numericality => { :greater_than => 0 }
-    validates :how_many, :numericality => { :greater_than => 0 }
+    validates :how_many, :numericality => { :greater_than => -1 }
     validates :photo, presence: true
 end

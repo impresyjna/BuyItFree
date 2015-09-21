@@ -13,7 +13,9 @@
               <li><%= link_to "Profil", current_user %></li>
               <li><%= link_to "Ustawienia", edit_user_path(current_user) %></li>
               <li><%= link_to "Moje zakupy", my_orders_path %></li>
+
               <% if seller?(current_user) %>
+                <h4>Strefa sprzedawcy</h4>
                 <li><%= link_to "Edytuj dane", seller_account_path %></li>
                 <li><%= link_to "Dodaj produkt", add_product_path %></li>
                 <li><%= link_to "Moje produkty", my_products_path %></li>
@@ -22,6 +24,7 @@
                 <li><%= link_to "Edytuj dane", customer_account_path %></li>
               <% end %> 
               <% if current_user.admin? %>
+                <h4>Panel admininistratora</h4>
                 <li><%= link_to "Użytkownicy", users_path %></li>
                 <li><%= link_to "Kategorie", categories_path %></li>
                 <li><%= link_to "Wiadomosci od użytkowników", contacts_path %></li>
