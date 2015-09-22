@@ -16,4 +16,5 @@ class Good < ActiveRecord::Base
     validates :price, presence: true, :numericality => { :greater_than => 0 }
     validates :how_many, :numericality => { :greater_than => -1 }
     validates :photo, presence: true
+    validates :how_many, :numericality => { :greater_than => 0 }, :on => :create
 end

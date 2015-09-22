@@ -9,6 +9,10 @@ class OrdersController < ApplicationController
 
   def create
   end
+  
+  def destroy
+    
+  end
 
   def edit
     @order = Order.find(params[:id])
@@ -26,26 +30,23 @@ class OrdersController < ApplicationController
   end
 
   def update
-    Order.transaction do
-      begin
         @order = Order.find(params[:id])
-        @ordered_items = @order.order_items
-        @ordered_items.each do |o|
-          @good = Good.find(o.good_id)
-          @good.how_many = @good.how_many - o.how_many
-          @good.save
-          puts @good.how_many
-        end
+            @ordered_items = @order.order_items
+            @ordered_items.each do |o|
+              @good = Good.find(o.good_id)
+                @good.how_many = @good.how_many - o.how_many
+                @good.save
+                  #flash[:danger] = "Towar został już wykupiony"
+                 # redirect_to root_url
+                #end
+            end
+
         if @order.update_attributes(order_params)
-          flash[:success] = "Zamówienie zostało zgłoszone do realizacji"
+          #flash[:success] = "Zamówienie zostało zgłoszone do realizacji"
           redirect_to @order
         else
           render 'edit'
         end
-      rescue ActiveRecord::StatementInvalid
-        flash[:error] = "Towar został już wyprzedany"
-      end
-    end
   end
 
   def show
