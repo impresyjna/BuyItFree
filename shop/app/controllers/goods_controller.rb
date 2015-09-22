@@ -15,7 +15,7 @@ class GoodsController < ApplicationController
   end
 
   def index
-    @goods = Good.paginate(page: params[:page])
+    @goods = Good.where("how_many>0").paginate(page: params[:page])
   end
   
   def create
@@ -41,7 +41,7 @@ class GoodsController < ApplicationController
   end
   
   def mine
-    @goods = current_user.goods.paginate(page: params[:page])
+    @goods = current_user.goods.where("how_many>0").paginate(page: params[:page])
   end
   
   def buy

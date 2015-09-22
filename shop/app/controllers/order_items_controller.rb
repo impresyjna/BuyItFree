@@ -22,11 +22,19 @@ class OrderItemsController < ApplicationController
     @order.save
     @order_item = current_user.order_items.create(order_item_params)
     @order_item = @order.order_items.create(order_item_params)
-    if @order_item.save
+    if @order_item.save 
       redirect_to edit_order_path(@order.id, :send_way_id => params[:order_item][:order][:send_way_id])
     else
-      flash[:warning] = "Nie udało się zamówić" 
-      render 'new'
+      @good = Good.find(params[:order_item][:good_id])
+      #if params[:order_item][:how_many] = 0 
+       # flash[:warning] = "Nie udało się zamówić. Liczba zamówionych przedmiotów musi być większa niż 0" 
+      #else 
+        if params[:order_item][:how_many]>@good.how_many
+          flash[:warning] = "Nie udało się zamówić. Przekroczono liczbę dostępnych przedmiotów." 
+      #   flash[:warning] = "Nie udało się zamówić."
+        end
+      #end
+      redirect_to new_order_item_path(:good_id => params[:order_item][:good_id])
     end
   end
 
