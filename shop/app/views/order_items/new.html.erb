@@ -16,8 +16,11 @@
 <%= form_for(@order_item) do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
         <%= f.label :how_many, "Ile kupić", class: 'required' %>
-        <%= f.number_field :how_many, class: 'form-control', :required => true %>
-        
+        <% if !params[:how_many].nil? %>
+            <%= f.number_field :how_many, :value => params[:how_many] ,  class: 'form-control', :required => true%>
+        <% else %>
+            <%= f.number_field :how_many,  class: 'form-control', :required => true%>
+        <% end %>
         <%= f.hidden_field :good_id, :value => @item.id %>
         
         <%= f.fields_for :order, @order do |s| %>

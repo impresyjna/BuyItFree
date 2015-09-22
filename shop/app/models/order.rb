@@ -4,4 +4,8 @@ class Order < ActiveRecord::Base
   belongs_to :seller
   
   has_many :order_items, :dependent => :destroy
+  
+    Order.transaction.do
+    @order.update!
+  end
 end

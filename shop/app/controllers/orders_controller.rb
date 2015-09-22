@@ -42,7 +42,7 @@ class OrdersController < ApplicationController
             end
 
         if @order.update_attributes(order_params)
-          #flash[:success] = "Zamówienie zostało zgłoszone do realizacji"
+          flash[:success] = "Zamówienie zostało zgłoszone do realizacji"
           redirect_to @order
         else
           render 'edit'
@@ -55,11 +55,11 @@ class OrdersController < ApplicationController
   end
   
   def my_orders
-    @orders = Order.where(customer_id: current_user.id)
+    @orders = Order.where("customer_id= ? AND order_state_id > ?",  current_user.id,1 )
   end
   
   def customers_orders
-    @orders = Order.where(seller_id: Seller.find_by(user_id: current_user).id)
+    @orders = Order.where("seller_id= ? AND order_state_id > ?", Seller.find_by(user_id: current_user).id,1 )
   end
   
   def change_state

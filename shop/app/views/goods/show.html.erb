@@ -34,8 +34,12 @@
       </ul>
       <%= link_to image_tag(@good.photo.url(:large)), @good.photo.url %>
       
-      <% if Good.find(params[:id]).user_id != current_user.id %>
-        <br><%= link_to "<span class=\"glyphicon glyphicon-shopping-cart\" aria-hidden=\"true\"/> KUP TERAZ".html_safe, new_order_item_path(:good_id => params[:id]), :class => "btn btn-lg btn-success" %>
+      <% if !logged_in? %>
+        <br><%= link_to "<span class=\"glyphicon glyphicon-shopping-cart\" aria-hidden=\"true\"/> Zaloguj się aby kupować".html_safe, '#', :class => "btn btn-lg btn-success" %>
+      <% else %>
+        <% if Good.find(params[:id]).user_id != current_user.id and logged_in? %>
+            <br><%= link_to "<span class=\"glyphicon glyphicon-shopping-cart\" aria-hidden=\"true\"/> KUP TERAZ".html_safe, new_order_item_path(:good_id => params[:id]), :class => "btn btn-lg btn-success" %>
+        <% end %>
       <% end %>
       
     

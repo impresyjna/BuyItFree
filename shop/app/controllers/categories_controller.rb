@@ -10,7 +10,7 @@ class CategoriesController < ApplicationController
   # GET /categories/1
   # GET /categories/1.json
   def show
-    @goods = Category.find(params[:id]).goods
+    @goods = Category.find(params[:id]).goods.where("how_many>0")
   end
 
   # GET /categories/new
