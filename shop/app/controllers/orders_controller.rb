@@ -31,21 +31,25 @@ class OrdersController < ApplicationController
 
   def update
         @order = Order.find(params[:id])
+        @order_bool = true
             @ordered_items = @order.order_items
             @ordered_items.each do |o|
               @good = Good.find(o.good_id)
                 @good.how_many = @good.how_many - o.how_many
-                @good.save
+                if !@good.save
+                  @order_bool = false
+                end
                   #flash[:danger] = "Towar został już wykupiony"
                  # redirect_to root_url
                 #end
             end
-
-        if @order.update_attributes(order_params)
+            
+        if @order.update_attributes!(order_params) and @order_bool
           flash[:success] = "Zamówienie zostało zgłoszone do realizacji"
           redirect_to @order
         else
-          render 'edit'
+          flash[:danger] = "Towar został wyprzedany"
+          redirect_to root_url
         end
   end
 
@@ -55,11 +59,11 @@ class OrdersController < ApplicationController
   end
   
   def my_orders
-    @orders = Order.where("customer_id= ? AND order_state_id > ?",  current_user.id,1 )
+    @orders = Order.where("customer_id= ? AND order_state_id > ? AND is_good = 't'",  current_user.id,1 )
   end
   
   def customers_orders
-    @orders = Order.where("seller_id= ? AND order_state_id > ?", Seller.find_by(user_id: current_user).id,1 )
+    @orders = Order.where("seller_id= ? AND order_state_id > ? AND is_good = 't'", Seller.find_by(user_id: current_user).id,1 )
   end
   
   def change_state
@@ -68,6 +72,6 @@ class OrdersController < ApplicationController
   
   private
       def order_params
-        params.require(:order).permit(:customer_id, :seller_id, :send_way_id, :total_price, :total_count, :order_state_id)
+        params.require(:order).permit(:customer_id, :seller_id, :send_way_id, :total_price, :total_count, :order_state_id).merge(is_good: @order_bool)
       end
 end

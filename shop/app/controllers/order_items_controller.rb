@@ -5,7 +5,7 @@ class OrderItemsController < ApplicationController
     @order_item = OrderItem.new
     @order_item.good_id = params[:good_id]
     @item = Good.find(@order_item.good_id)
-    @order = Order.new
+    @order = Order.new(is_good: true)
   end
 
   def show
@@ -18,7 +18,7 @@ class OrderItemsController < ApplicationController
   end
 
   def create
-    @order = Order.new(order_state_id: 1)
+    @order = Order.new(order_state_id: 1, is_good: true)
     @order.save
     @order_item = current_user.order_items.create(order_item_params)
     @order_item = @order.order_items.create(order_item_params)

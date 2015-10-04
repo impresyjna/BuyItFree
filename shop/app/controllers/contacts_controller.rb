@@ -5,7 +5,7 @@ class ContactsController < ApplicationController
 
   def index
     @contacts_with_respond = Contact.where("respond is not null")
-    @contacts_without_respond = Contact.find_by(respond: nil)
+    @contacts_without_respond = Contact.where(respond: nil)
   end
 
   def edit

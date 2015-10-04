@@ -3,7 +3,7 @@
 <div class="container">
    <%= render 'carousel/carousel_holder' %>
    <div class="col-md-9">
-    <% @products = Good.last(6)%>
+    <% @products = Good.where('how_many>0').last(6) %>
       <div class="row">
           <%= render @products %>
       </div>

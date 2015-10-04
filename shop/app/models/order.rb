@@ -5,7 +5,14 @@ class Order < ActiveRecord::Base
   
   has_many :order_items, :dependent => :destroy
   
-    Order.transaction.do
-    @order.update!
+  validate :is_ok?
+  
+  def is_ok?
+    if self.is_good?
+      return true
+    else
+      return false
+    end
   end
+  
 end
